@@ -1,8 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
-const Input = ({ tasks, setTask }) => {
-  const [inputValue, setInputValue] = useState('')
+const Input = ({ inputValue, tasks, setTask, setSelectItems, setInputValue }) => {
+
   const [warning, setWarning] = useState(false)
+  const [selectValue, setSelectValue] = useState('')
+
+
 
   const inputHandler = (e) => {
     setInputValue(e.target.value)
@@ -18,15 +21,37 @@ const Input = ({ tasks, setTask }) => {
     }
   }
 
+
+  const select = (e) => {
+    setSelectValue(e.target.value)
+  }
+
+  const selectSwitch = () => {
+    switch (selectValue) {
+      case "Checked":
+        setSelectItems(tasks.filter((el) => el.checked === true))
+        break;
+      case "Unchecked":
+        setSelectItems(tasks.filter((el) => el.checked === false))
+        break;
+      default:
+        setSelectItems([...tasks])
+    }
+  }
+
+  useEffect(() => {
+    selectSwitch()
+  }, [tasks, selectValue])
+
   return (
     <div className='input'>
       <h1 style={{ color: warning ? "red" : "white", fontSize: warning ? "40px" : "32px" }}>Dodaj zadanie</h1>
       <form type='submit'>
         <input type="text" onChange={inputHandler} value={inputValue} />
         <button onClick={onClickHandler}><i className="fas fa-plus"></i></button>
-        <select>
+        <select onChange={select} >
           <option>All</option>
-          <option>Chacked</option>
+          <option>Checked</option>
           <option>Unchecked</option>
         </select>
       </form>

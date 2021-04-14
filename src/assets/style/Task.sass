@@ -1,18 +1,22 @@
-.task
-  display: flex
-  justify-content: center
-  align-items: center
-  background-color: rgba(121, 173, 245, 0.6)
-  margin-top: 70px
-  padding: 10px
-  width: 100%
-  height: 50px
-  border-radius: 20px
-  li
+.task-list
+  height: 80vh
+  overflow-y: auto
+  padding: 0
+  .task
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: rgba(121, 173, 245, 0.8)
+    margin-top: 15px
+    padding: 10px
+    height: 50px
+    border-radius: 20px
+  p
     color: white
     list-style-type: none
     font-size: 26px
     flex-grow: 3
+    padding-left: 5px
   button
     width: 40px
     height: 40px
@@ -23,12 +27,24 @@
     cursor: pointer
     transition: 0.3s
   .trash
+    color: red
     font-size: 25px
     background-color: white
     &:hover
       background-color: #a31111
+      color: white
   .check
+    color: #18c335
     font-size: 25px
     background-color: white
     &:hover
       background-color: #18c335
+      color: white
+
+  .edit
+    color: #1915e0
+    font-size: 25px
+    background-color: white
+    &:hover
+      background-color: #1915e0
+      color: white
