@@ -46,7 +46,7 @@ const Input = ({ inputValue, tasks, setTask, setSelectItems, setInputValue }) =>
 
   return (
     <div className='input'>
-      <h1 style={{ color: warning ? "red" : "white", fontSize: warning ? "40px" : "32px" }}>Dodaj zadanie</h1>
+      <h1 style={{ color: warning ? "red" : "white", fontSize: warning ? "40px" : "32px" }}>Add task</h1>
       <form type='submit'>
         <input type="text" onChange={inputHandler} value={inputValue} />
         <button onClick={onClickHandler}><i className="fas fa-plus"></i></button>
