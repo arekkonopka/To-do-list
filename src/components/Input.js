@@ -13,6 +13,7 @@ const Input = ({ inputValue, tasks, setTask, setSelectItems, setInputValue }) =>
 
   const onClickHandler = (e) => {
     e.preventDefault()
+
     if (inputValue === '') { return setWarning(true) }
     else {
       setTask([...tasks, { task: inputValue, checked: false, id: Math.random() }])

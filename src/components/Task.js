@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const Task = ({ tasks, setTask, selectItems }) => {
   const [editTrue, setEditTrue] = useState(false)
@@ -52,7 +52,7 @@ const Task = ({ tasks, setTask, selectItems }) => {
             task.task}</p>
           <button className='check' onClick={() => onClickCheckHandler(task.id)}><i className="fas fa-check"></i></button>
           <button className='trash' onClick={() => onClickTrashHadndler(task.id)}><i className="far fa-trash-alt"></i></button>
-          <button className='edit' onClick={() => onClickEdit()}><i className="far fa-edit"></i></button>
+          <button className='edit' onClick={() => onClickEdit()} ><i className="far fa-edit"></i></button>
         </li>)}
     </ul>
   )
