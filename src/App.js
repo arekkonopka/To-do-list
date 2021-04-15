@@ -6,7 +6,10 @@ import Task from './components/Task';
 function App() {
 
 
-  const [tasks, setTask] = useState(JSON.parse(window.localStorage.getItem('task') || []))
+  const [tasks, setTask] = useState(() => {
+    if (window.localStorage.getItem('task') !== null) { return JSON.parse(window.localStorage.getItem('task')) }
+    else { return [] }
+  })
   const [selectItems, setSelectItems] = useState([])
   const [inputValue, setInputValue] = useState('')
 
@@ -14,21 +17,10 @@ function App() {
     setLocalStorage()
   }, [tasks])
 
-  useEffect(() => {
-    getLocalStorage()
-  }, [])
-
   const setLocalStorage = () => {
     window.localStorage.setItem("task", JSON.stringify(tasks))
   }
 
-  const getLocalStorage = () => {
-    if (window.localStorage.getItem('task') === null) {
-      window.localStorage.setItem("task", JSON.stringify([]))
-    } else {
-      setTask(JSON.parse(window.localStorage.getItem('task')))
-    }
-  }
 
   return (
     <div className="App">
